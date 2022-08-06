@@ -412,9 +412,6 @@ int32 HELLO_WORLD_Process(const HELLO_WORLD_ProcessCmd_t *Msg)
         return status;
     }
 
-    /* Invoke a function provided by HELLO_WORLD_LIB */
-    SAMPLE_LIB_Function();
-
     return CFE_SUCCESS;
 
 } /* End of HELLO_WORLD_ProcessCC */
