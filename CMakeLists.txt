@@ -11,7 +11,7 @@ add_cfe_app(hello_world fsw/src/hello_world.c)
 # add_cfe_app_dependency(sample_app sample_lib)
 
 # Add table
-add_cfe_tables(helloWorldTable Table fsw/tables/hello_world_tbl.c)
+add_cfe_tables(helloWorldTable fsw/tables/hello_world_tbl.c)
 
 # If UT is enabled, then add the tests from the subdirectory
 # Note that this is an app, and therefore does not provide
