@@ -38,6 +38,6 @@
 #define HELLO_WORLD_LEN_ERR_EID           6
 #define HELLO_WORLD_PIPE_ERR_EID          7
 
-#define HELLO_WORLD_EVENT_COUNTS 7
+#define HELLO_WORLD_EVENT_COUNTS 8
 
 #endif /* HELLO_WORLD_EVENTS_H */

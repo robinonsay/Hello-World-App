@@ -122,6 +122,7 @@ int32 HELLO_WORLD_Init(void)
     */
     HELLO_WORLD_Data.CmdCounter = 0;
     HELLO_WORLD_Data.ErrCounter = 0;
+    HELLO_WORLD_Data.HelloCounter = 0;
 
     /*
     ** Initialize app configuration data
@@ -164,6 +165,9 @@ int32 HELLO_WORLD_Init(void)
     */
     CFE_MSG_Init(&HELLO_WORLD_Data.HkTlm.TlmHeader.Msg, CFE_SB_ValueToMsgId(HELLO_WORLD_HK_TLM_MID),
                  sizeof(HELLO_WORLD_Data.HkTlm));
+    
+    CFE_MSG_Init(&HELLOWORLD_Data.HloTlm.TlmHeader.Msg, CFE_SB_ValueToMsgId(HELLO_WORLD_HLO_TLM_MID),
+                 sizeof(HELLOWORLD_Data.HloTlm));
 
     /*
     ** Create Software Bus message pipe.
@@ -277,6 +281,13 @@ void HELLO_WORLD_ProcessGroundCommand(CFE_SB_Buffer_t *SBBufPtr)
 
             break;
 
+        case HELLO_WORLD_HELLO_CC:
+            if (HELLO_WORLD_VerifyCmdLength(&SBBufPtr->Msg, sizeof(HELLO_WORLD_HelloCmd_t)))
+            {
+                HELLO_WORLD_Hello((HELLO_WORLD_HelloCmd_t *) SBBufPtr);
+            }
+            break;
+
         case HELLO_WORLD_RESET_COUNTERS_CC:
             if (HELLO_WORLD_VerifyCmdLength(&SBBufPtr->Msg, sizeof(HELLO_WORLD_ResetCountersCmd_t)))
             {
@@ -343,7 +354,7 @@ int32 HELLO_WORLD_ReportHousekeeping(const CFE_MSG_CommandHeader_t *Msg)
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
 /*                                                                            */
-/* HELLO_WORLD_Noop -- SAMPLE NOOP commands                                        */
+/* HELLO_WORLD_Noop -- SAMPLE NOOP commands                                   */
 /*                                                                            */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
 int32 HELLO_WORLD_Noop(const HELLO_WORLD_NoopCmd_t *Msg)
@@ -358,8 +369,26 @@ int32 HELLO_WORLD_Noop(const HELLO_WORLD_NoopCmd_t *Msg)
 
 } /* End of HELLO_WORLD_Noop */
 
+
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
-/*  Name:  HELLO_WORLD_ResetCounters                                               */
+/*                                                                            */
+/* HELLO_WORLD_Hello -- Hello command                                         */
+/*                                                                            */
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
+int32 HELLO_WORLD_Hello(const HELLO_WORLD_HelloCmd_t *Msg)
+{
+    HELLO_WORLD_DATA.HelloCounter += Msg->totalCount;
+    HELLO_WORLD_DATA.HloTlm.totalCount = HELLO_WORLD_DATA.HelloCounter;
+    CFE_SB_TimeStampMsg(&HELLO_WORLD_DATA.HloTlm.TlmHeader.Msg);
+    CFE_SB_TransmitMsg(&HELLO_WORLD_DATA.HloTlm.TlmHeader.Msg, true);
+    CFE_EVS_SendEvent(HELLO_WORLD_COMMANDHLO_INF_EID, CFE_EVS_EventType_INFORMATION,
+                      "HELLO_WORLD: HELLO command counter%s",
+                      HELLO_WORLD_DATA.HelloCounter);
+    return CFE_SUCCESS;
+}/* End of HELLO_WORLD_Hello */
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
+/*  Name:  HELLO_WORLD_ResetCounters                                          */
 /*                                                                            */
 /*  Purpose:                                                                  */
 /*         This function resets all the global counter variables that are     */

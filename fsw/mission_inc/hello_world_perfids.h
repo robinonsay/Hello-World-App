@@ -23,12 +23,12 @@
 /**
  * @file
  *
- * Define Sample App Performance IDs
+ * Define Hello World App Performance IDs
  */
 
 #ifndef HELLO_WORLD_PERFIDS_H
 #define HELLO_WORLD_PERFIDS_H
 
-#define HELLO_WORLD_PERF_ID 91
+#define HELLO_WORLD_PERF_ID 691
 
 #endif /* HELLO_WORLD_PERFIDS_H */
