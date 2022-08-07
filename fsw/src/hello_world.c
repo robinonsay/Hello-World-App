@@ -167,7 +167,7 @@ int32 HELLO_WORLD_Init(void)
                  sizeof(HELLO_WORLD_Data.HkTlm));
     
     CFE_MSG_Init(&HELLO_WORLD_Data.HloTlm.TlmHeader.Msg, CFE_SB_ValueToMsgId(HELLO_WORLD_HLO_TLM_MID),
-                 sizeof(HELLOWORLD_Data.HloTlm));
+                 sizeof(HELLO_WORLD_Data.HloTlm));
 
     /*
     ** Create Software Bus message pipe.
@@ -378,9 +378,9 @@ int32 HELLO_WORLD_Noop(const HELLO_WORLD_NoopCmd_t *Msg)
 int32 HELLO_WORLD_Hello(const HELLO_WORLD_HelloCmd_t *Msg)
 {
     HELLO_WORLD_Data.HelloCounter += Msg->count;
-    HELLO_WORLD_Data.HloTlm.totalCount = HELLO_WORLD_Data.HelloCounter;
-    CFE_SB_TimeStampMsg(&HELLO_WORLD_DATA.HloTlm.TlmHeader.Msg);
-    CFE_SB_TransmitMsg(&HELLO_WORLD_DATA.HloTlm.TlmHeader.Msg, true);
+    HELLO_WORLD_Data.HloTlm.totalCount = HELLO_WORLD_DATA.HelloCounter;
+    CFE_SB_TimeStampMsg(&HELLO_WORLD_Data.HloTlm.TlmHeader.Msg);
+    CFE_SB_TransmitMsg(&HELLO_WORLD_Data.HloTlm.TlmHeader.Msg, true);
     CFE_EVS_SendEvent(HELLO_WORLD_COMMANDHLO_INF_EID, CFE_EVS_EventType_INFORMATION,
                       "HELLO_WORLD: HELLO command counter%s",
                       HELLO_WORLD_DATA.HelloCounter);
