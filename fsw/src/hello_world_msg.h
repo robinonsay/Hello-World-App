@@ -35,6 +35,7 @@
 #define HELLO_WORLD_NOOP_CC           0
 #define HELLO_WORLD_RESET_COUNTERS_CC 1
 #define HELLO_WORLD_PROCESS_CC        2
+#define HELLO_WORLD_HELLO_CC          3
 
 /*************************************************************************/
 
@@ -57,6 +58,18 @@ typedef HELLO_WORLD_NoArgsCmd_t HELLO_WORLD_NoopCmd_t;
 typedef HELLO_WORLD_NoArgsCmd_t HELLO_WORLD_ResetCountersCmd_t;
 typedef HELLO_WORLD_NoArgsCmd_t HELLO_WORLD_ProcessCmd_t;
 
+/*
+** Hello world command
+*/
+typedef struct
+{
+    CFE_MSG_CommandHeader_t CmdHeader;
+    uint8_t                 count;
+} HELLO_WORLD_CountCmd_t;
+
+typedef HELLO_WORLD_CountCmd_t HELLO_WORLD_HelloCmd_t;
+
+
 /*************************************************************************/
 /*
 ** Type definition (SAMPLE App housekeeping)
@@ -74,5 +87,12 @@ typedef struct
     CFE_MSG_TelemetryHeader_t  TlmHeader; /**< \brief Telemetry header */
     HELLO_WORLD_HkTlm_Payload_t Payload;   /**< \brief Telemetry payload */
 } HELLO_WORLD_HkTlm_t;
+
+typedef struct
+{
+    CFE_MSG_TelemetryHeader_t TlmHeader;
+    uint32_t totalCount;
+} HELLO_WORLD_HelloTlm_t;
+
 
 #endif /* HELLO_WORLD_MSG_H */

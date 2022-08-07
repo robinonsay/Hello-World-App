@@ -69,9 +69,19 @@ typedef struct
     uint8 ErrCounter;
 
     /*
+    ** Hello World counter...
+    */
+    u_int32_t HelloCounter;
+
+    /*
     ** Housekeeping telemetry packet...
     */
     HELLO_WORLD_HkTlm_t HkTlm;
+
+    /*
+    ** Hello Counter telemetry packet...
+    */
+    HELLO_WORLD_HelloTlm_t HloTlm;
 
     /*
     ** Run Status variable used in the main processing loop
@@ -109,6 +119,7 @@ int32 HELLO_WORLD_ReportHousekeeping(const CFE_MSG_CommandHeader_t *Msg);
 int32 HELLO_WORLD_ResetCounters(const HELLO_WORLD_ResetCountersCmd_t *Msg);
 int32 HELLO_WORLD_Process(const HELLO_WORLD_ProcessCmd_t *Msg);
 int32 HELLO_WORLD_Noop(const HELLO_WORLD_NoopCmd_t *Msg);
+int32 HELLO_WORLD_Hello(const HELLO_WORLD_HelloCmd_t *Msg);
 void  HELLO_WORLD_GetCrc(const char *TableName);
 
 int32 HELLO_WORLD_TblValidationFunc(void *TblData);

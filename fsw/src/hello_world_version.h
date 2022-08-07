@@ -31,15 +31,15 @@
 
 /* Development Build Macro Definitions */
 
-#define HELLO_WORLD_BUILD_NUMBER 73 /*!< Development Build: Number of commits since baseline */
+#define HELLO_WORLD_BUILD_NUMBER 0 /*!< Development Build: Number of commits since baseline */
 #define HELLO_WORLD_BUILD_BASELINE \
     "v1.2.0-rc1" /*!< Development Build: git tag that is the base for the current development */
 
 /* Version Macro Definitions */
 
-#define HELLO_WORLD_MAJOR_VERSION 1  /*!< @brief ONLY APPLY for OFFICIAL releases. Major version number. */
-#define HELLO_WORLD_MINOR_VERSION 1  /*!< @brief ONLY APPLY for OFFICIAL releases. Minor version number. */
-#define HELLO_WORLD_REVISION      99 /*!< @brief ONLY APPLY for OFFICIAL releases. Revision version number. */
+#define HELLO_WORLD_MAJOR_VERSION 0  /*!< @brief ONLY APPLY for OFFICIAL releases. Major version number. */
+#define HELLO_WORLD_MINOR_VERSION 0  /*!< @brief ONLY APPLY for OFFICIAL releases. Minor version number. */
+#define HELLO_WORLD_REVISION      0 /*!< @brief ONLY APPLY for OFFICIAL releases. Revision version number. */
 #define HELLO_WORLD_MISSION_REV   0  /*!< @brief ONLY USED by MISSION Implementations. Mission revision */
 
 #define HELLO_WORLD_STR_HELPER(x) #x /*!< @brief Helper function to concatenate strings from integer macros */

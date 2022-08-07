@@ -23,18 +23,19 @@
 /**
  * @file
  *
- * Define Sample App Message IDs
+ * Define Hello World Message IDs
  *
- * \note The Sample App assumes default configuration which uses V1 of message id implementation
+ * \note The Hello World App assumes default configuration which uses V1 of message id implementation
  */
 
 #ifndef HELLO_WORLD_MSGIDS_H
 #define HELLO_WORLD_MSGIDS_H
 
 /* V1 Command Message IDs must be 0x18xx */
-#define HELLO_WORLD_CMD_MID     0x1882
-#define HELLO_WORLD_SEND_HK_MID 0x1883
+#define HELLO_WORLD_CMD_MID     0x18A0
+#define HELLO_WORLD_SEND_HK_MID 0x18A1
 /* V1 Telemetry Message IDs must be 0x08xx */
-#define HELLO_WORLD_HK_TLM_MID 0x0883
+#define HELLO_WORLD_HK_TLM_MID  0x08AF
+#define HELLO_WORLD_HLO_TLM_MID 0x08AE
 
 #endif /* HELLO_WORLD_MSGIDS_H */
