@@ -71,7 +71,7 @@ typedef struct
     /*
     ** Hello World counter...
     */
-    u_int32_t HelloCounter;
+    uint32 HelloCounter;
 
     /*
     ** Housekeeping telemetry packet...

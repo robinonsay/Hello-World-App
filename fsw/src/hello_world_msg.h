@@ -23,14 +23,14 @@
 /**
  * @file
  *
- * Define SAMPLE App  Messages and info
+ * Define Hello World App  Messages and info
  */
 
 #ifndef HELLO_WORLD_MSG_H
 #define HELLO_WORLD_MSG_H
 
 /*
-** SAMPLE App command codes
+** Hello World App command codes
 */
 #define HELLO_WORLD_NOOP_CC           0
 #define HELLO_WORLD_RESET_COUNTERS_CC 1
@@ -91,7 +91,7 @@ typedef struct
 typedef struct
 {
     CFE_MSG_TelemetryHeader_t TlmHeader;
-    uint32_t totalCount;
+    uint32 TotalCount;
 } HELLO_WORLD_HelloTlm_t;
 
 
