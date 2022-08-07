@@ -378,12 +378,12 @@ int32 HELLO_WORLD_Noop(const HELLO_WORLD_NoopCmd_t *Msg)
 int32 HELLO_WORLD_Hello(const HELLO_WORLD_HelloCmd_t *Msg)
 {
     HELLO_WORLD_Data.HelloCounter += Msg->count;
-    HELLO_WORLD_Data.HloTlm.totalCount = HELLO_WORLD_DATA.HelloCounter;
+    HELLO_WORLD_Data.HloTlm.totalCount = HELLO_WORLD_Data.HelloCounter;
     CFE_SB_TimeStampMsg(&HELLO_WORLD_Data.HloTlm.TlmHeader.Msg);
     CFE_SB_TransmitMsg(&HELLO_WORLD_Data.HloTlm.TlmHeader.Msg, true);
     CFE_EVS_SendEvent(HELLO_WORLD_COMMANDHLO_INF_EID, CFE_EVS_EventType_INFORMATION,
-                      "HELLO_WORLD: HELLO command counter%s",
-                      HELLO_WORLD_DATA.HelloCounter);
+                      "HELLO_WORLD: HELLO command counter %u",
+                      HELLO_WORLD_Data.HelloCounter);
     return CFE_SUCCESS;
 }/* End of HELLO_WORLD_Hello */
 
